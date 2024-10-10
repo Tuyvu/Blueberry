@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-12">
                     <div class="input-button">
-                        <button type="submit" class="bb-btn-2">Thanh toán</button>
+                        <button type="submit" name="redirect" class="bb-btn-2">Thanh toán</button>
                     </div>
                 </div>   
                 <div class="modal fade" id="newAddressModal" tabindex="-1" aria-labelledby="newAddressModalLabel" aria-hidden="true">

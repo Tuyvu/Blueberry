@@ -8,6 +8,11 @@
             <div class="col-md-8">
                 <!-- general form elements -->
                 <div class="box box-primary">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="box-header with-border">
                         <h3 class="box-title">Cập nhật ảnh</h3>
                     </div>
@@ -21,9 +26,9 @@
                                 <label for="photo">Ảnh cửa hàng</label>
                                 <input type="file" class="form-control" id="photo" name="photo">
                                 <img id="photo-preview" src="#" alt="Preview" style="display: none; max-width: 200px; margin-top: 10px;"/>
-                                @error('photo')
-                                    <span class="help-block" style="color: red;">{{ $message }}</span>
-                                @enderror
+                                @if (session('error'))
+                                    <span class="help-block" style="color: red;"> {{ session('error') }}</span>
+                                @endif
                             </div>
                             
                             

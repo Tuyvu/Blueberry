@@ -119,31 +119,24 @@ class CartController extends Controller
                     $product->update(['discount' => $quantity]);
                 }
             }
-            return view('user.finishcheckout', compact('order'));
+            return view('user.finishcheckout');
         }else{
-            return redirect()->route('cart.checkoutvnpay', ['order_id' => $request->order_id]);
-        }
-    }
-    public function checkoutvnpay(Request $request) {
-        $order = Orders::where('id', $request->order_id)->first();
-        if (!$order) {
-            dd("loi đơn");
-            return redirect()->back()->with('error', 'Đơn hàng không tồn tại.');
-        }
-        
-        try {
-            $vnp_TmnCode = Config::get('vnpay.vnp_TmnCode');
-            $vnp_HashSecret = Config::get('vnpay.vnp_HashSecret');
-            $vnp_Url = Config::get('vnpay.vnp_Url');
-            $vnp_ReturnUrl = Config::get('vnpay.vnp_ReturnUrl');
-        
-            $vnp_TxnRef = $request->order_id; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này 
-            $vnp_OrderInfo = "Thanh toán đơn hàng";
-            $vnp_OrderType = "billpayment";
-            $vnp_Amount = 20000 * 100;
-            $vnp_Locale = "vn";
-            $vnp_BankCode = "NCB";
+            $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+            $vnp_Returnurl = "http://localhost:8080/user/checkoutvnpay";
+            $vnp_TmnCode = "NDB93I5F";//Mã website tại VNPAY 
+            $vnp_HashSecret = "43MULNM7R6ECXRH436BVEHF1V411ER6V"; //Chuỗi bí mật
+            
+            $vnp_TxnRef = $order->id; 
+            $vnp_OrderInfo = 'Thanh toán đơn';
+            $vnp_OrderType = 'billpayment';
+            $vnp_Amount = $order->total_money * 100;
+            $vnp_Locale = 'vn';
+            $vnp_BankCode = 'NCB';
             $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+            //Add Params of 2.0.1 Version
+            // $vnp_ExpireDate = $_POST['txtexpire'];
+            //Billing
+            
             $inputData = array(
                 "vnp_Version" => "2.1.0",
                 "vnp_TmnCode" => $vnp_TmnCode,
@@ -155,59 +148,64 @@ class CartController extends Controller
                 "vnp_Locale" => $vnp_Locale,
                 "vnp_OrderInfo" => $vnp_OrderInfo,
                 "vnp_OrderType" => $vnp_OrderType,
-                "vnp_ReturnUrl" => $vnp_ReturnUrl,
-                "vnp_TxnRef" => $vnp_TxnRef,
+                "vnp_ReturnUrl" => $vnp_Returnurl,
+                "vnp_TxnRef" => $vnp_TxnRef
             );
-    
-        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-            $inputData['vnp_BankCode'] = $vnp_BankCode;
-        }
-    
-        // Kiểm tra nếu thông tin tỉnh/thành phố hóa đơn đã được thiết lập và không rỗng
-        if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
-            $inputData['vnp_Bill_State'] = $vnp_Bill_State; // Gán thông tin tỉnh/thành phố hóa đơn vào mảng dữ liệu input
-        }
-
-        // Sắp xếp mảng dữ liệu input theo thứ tự bảng chữ cái của key
-        ksort($inputData);
-    
-        $query = ""; // Biến lưu trữ chuỗi truy vấn (query string)
-        $i = 0; // Biến đếm để kiểm tra lần đầu tiên
-        $hashdata = ""; // Biến lưu trữ dữ liệu để tạo mã băm (hash data)
-
-        // Duyệt qua từng phần tử trong mảng dữ liệu input
-        foreach ($inputData as $key => $value) {
-            if ($i == 1) {
-                // Nếu không phải lần đầu tiên, thêm ký tự '&' trước mỗi cặp key=value
-                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
-            } else {
-                // Nếu là lần đầu tiên, không thêm ký tự '&'
-                $hashdata .= urlencode($key) . "=" . urlencode($value);
-                $i = 1; // Đánh dấu đã qua lần đầu tiên
-            }
-            // Xây dựng chuỗi truy vấn
-            $query .= urlencode($key) . "=" . urlencode($value) . '&';
-        }
-        
-        // Gán chuỗi truy vấn vào URL của VNPay
-        $vnp_Url = $vnp_Url . "?" . $query;
-
-        // Kiểm tra nếu chuỗi bí mật hash secret đã được thiết lập
-        if (isset($vnp_HashSecret)) {
-            // Tạo mã băm bảo mật (Secure Hash) bằng cách sử dụng thuật toán SHA-512 với hash secret
-            $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
-            // Thêm mã băm bảo mật vào URL để đảm bảo tính toàn vẹn của dữ liệu
-            $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
-        }
-        
-        return redirect($vnp_Url);
-            } catch (\Throwable $th) {
-                dd($th); // Hiển thị lỗi nếu có
-            }
-        }
-        public function return(Request $request)
-        {
             
+            if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                $inputData['vnp_BankCode'] = $vnp_BankCode;
+            }
+            if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
+                $inputData['vnp_Bill_State'] = $vnp_Bill_State;
+            }
+            
+            //var_dump($inputData);
+            ksort($inputData);
+            $query = "";
+            $i = 0;
+            $hashdata = "";
+            foreach ($inputData as $key => $value) {
+                if ($i == 1) {
+                    $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+                } else {
+                    $hashdata .= urlencode($key) . "=" . urlencode($value);
+                    $i = 1;
+                }
+                $query .= urlencode($key) . "=" . urlencode($value) . '&';
+            }
+            
+            $vnp_Url = $vnp_Url . "?" . $query;
+            if (isset($vnp_HashSecret)) {
+                $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
+                $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+            }
+            $returnData = array('code' => '00'
+                , 'message' => 'success'
+                , 'data' => $vnp_Url);
+                if (isset($_POST['redirect'])) {
+                    header('Location: ' . $vnp_Url);
+                    die();
+                } else {
+                    echo json_encode($returnData);
+                }
+        }
+    }
+    public function checkoutvnpay(Request $request) {
+            // dd($request->vnp_TxnRef);  
+            $user = Auth::user();
+            $order = Orders::where('id', $request->vnp_TxnRef)->first();
+            $order->update(['pay' => 2]);
+            $cart = Cart::where('user_id', $user->id)->first();
+            if ($cart) {
+                foreach ($order->orderDetails as $item) {
+                    Cart_items::where('cart_id', $cart->id)->where('product_id', $item->product_id)->delete();
+                    $quantity = $item->total_money / $item->price;
+                    $product = Product::where('id', $item->product_id)->first();
+                    $quantity = $product->discount - $quantity;
+                    $product->update(['discount' => $quantity]);
+                }
+            }
+            return view('user.finishcheckout'); 
         }
     
     

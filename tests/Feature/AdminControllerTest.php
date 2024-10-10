@@ -14,7 +14,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 
-class ExampleTest extends TestCase
+class AdminControllerTest extends TestCase
 {
     use RefreshDatabase;
     public function setUp(): void
@@ -172,5 +172,4 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
 
     }
-
 }

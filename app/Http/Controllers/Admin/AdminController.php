@@ -78,8 +78,10 @@ class AdminController extends Controller
         if($request->hasFile('photo')){
             $fileName = time() . '_' . $request->photo->getClientOriginalName();
             $path = $request->photo->storeAs('public/images/products', $fileName);
+        }else{
+            return redirect()->back()->with('error', 'Chưa chọn ảnh');
         }
-        return redirect()->route('user.show');
+        return redirect()->back()->with('success', 'Chọn ảnh thêm ảnh thành công');
     }
     public function staff()
     {
@@ -88,7 +90,6 @@ class AdminController extends Controller
     }
     public function addstaff()
     {
-        
         return view('admin.staff.add');
     }
     public function postaddstaff(Request $req)

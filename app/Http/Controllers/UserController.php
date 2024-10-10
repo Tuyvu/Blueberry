@@ -69,7 +69,7 @@ class UserController extends Controller
     public function shiping()
     {
         $user = Auth::user();
-        $orders = Orders::where('users_id',$user->id)->where('pay',1)->orderBy('created_at', 'desc')->get();
+        $orders = Orders::where('users_id',$user->id)->where('pay','!=', '0')->orderBy('created_at', 'desc')->get();
         return view('user.shiping',compact('orders'));
     }
     public function shipingWait()

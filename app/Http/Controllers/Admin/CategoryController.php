@@ -10,27 +10,15 @@ use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $categories = Category::paginate(10);
         return view('admin.category.index',compact('categories'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.category.add',compact('categories'));
+        return view('admin.category.add');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreCategoryRequest $request)
     {
         try {
@@ -40,26 +28,10 @@ class CategoryController extends Controller
             return redirect()->back()->with('error','them moi that bai');
         }
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Category $category)
     {
-        $categories = Category::all();
-        return view('admin.category.edit',compact('category','categories'));
+        return view('admin.category.edit',compact('category'));
     }
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         try {
@@ -69,10 +41,6 @@ class CategoryController extends Controller
             return redirect()->back()->with('error','cap nhat that bai');
         }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Category $category)
     {
         try {

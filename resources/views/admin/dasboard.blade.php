@@ -2,7 +2,6 @@
 @section('title','homeadmin')
 @section('mainad-content')
 <div class="page-wrapper">
-
     <!-- Page Content-->
     <div class="page-content">
         <div class="container-xxl">

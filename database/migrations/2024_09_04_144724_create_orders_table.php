@@ -21,6 +21,9 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->text('note')->nullable();
             $table->float('total_money');
+            $table->integer('shiptype')->default(0);
+            $table->integer('pay')->default(0);
+            $table->integer('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

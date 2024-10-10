@@ -97,7 +97,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             @if ($order->pay == '1')
-                                            <p class="text-body fw-semibold">Thanh toán khi nhận hàng :</p>
+                                            <p class="text-body fw-semibold">Thanh toán khi nhận hàng</p>
                                             @else
                                             <p class="text-body fw-semibold">Thanh toán vnPay</p>
                                             @endif
@@ -106,11 +106,11 @@
                             </div>
                             <hr class="hr-dashed">
                             <div class="d-flex justify-content-between">
-                                @if ($order->pay == '1')
-                                <h4 class="mb-0">Tổng thu  : {{$order->total_money}}đ</h4>
-                                        @else
+                                @if ($order->pay == 1)
+                                <h4 class="mb-0">Tổng thu   : {{$order->total_money}}đ</h4>
+                                @else
                                 <h4 class="mb-0">Tổng thu  : 0đ</h4>
-                                        @endif</p>
+                                @endif</p>
                         
 
                               </div>

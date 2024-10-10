@@ -6,7 +6,11 @@
     <div class="container">
         <h1>Theo dõi đơn hàng</h1>
         <x-shiping-component :orders="$orders"/>
-        <a href="{{route('user.finishshiping',$orders)}}" class="btn btn-primary">Đã nhận được hàng</a>                
+        @if ($orders->status==2)
+        <a href="{{route('user.finishshiping',$orders)}}" class="btn btn-primary">Đã nhận được hàng</a> 
+        @else          
+        <a class="btn btn-secondary">Đã nhận được hàng</a>                
+        @endif
     </div>
 </section>
 

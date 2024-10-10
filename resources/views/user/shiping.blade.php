@@ -36,7 +36,12 @@
                                 <td>{{$detail->product->name}}</td>
                                 <td>{{$detail->price}}</td>
                                 <td>{{$detail->total_money / $detail->price}}</td>
-                                <td>{{$detail->total_money}}</td>
+                                @if ($item->pay==1)    
+                                <td>{{$item->total_money}}</td>
+                                @else
+                                <td>0</td>
+                                    
+                                @endif
                                 <td><a href="{{Route('user.detailshiping',$item)}}" class="btn btn-success">xem</a></td>
                             </tr>
                             @endforeach

@@ -33,13 +33,14 @@ class OrderController extends Controller
     public function confirmOrdership(Orders $order)
     {
         $products = Orders_Details::where('orders_id',$order->id)->get();
+        // dd($order);
         return view('admin.order.comfirmship', compact('order', 'products'));
 
     }
     public function finishOrdership($id)
     {
         // dd($id);
-        $order = Orders::where('id', $id)->update(['status' => 2]);
+        $order = Orders::where('id', $id)->update(['status' => 2])->update(['pay' => 2]);
         return redirect()->route('admin.ordership');
     }
     public function getAllOrdership()

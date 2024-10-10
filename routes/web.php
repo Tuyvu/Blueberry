@@ -26,7 +26,7 @@ Route::post('/login', [UserController::class, 'postlogin'])->name('user.postlogi
 Route::get('/register', [UserController::class, 'register'])->name('user.register');
 Route::post('/register', [UserController::class, 'postregister']);
 Route::get('/logon', [AdminController::class, 'logon'])->name('logon');
-Route::post('/logon', [AdminController::class, 'postlogon']);
+Route::post('/logon', [AdminController::class, 'postlogon'])->name('postlogon');
 Route::get('/logoutadmin', [AdminController::class, 'logout'])->name('admin.logout');
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
