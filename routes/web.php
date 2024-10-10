@@ -41,7 +41,6 @@ Route::prefix('user')->middleware(UserMiddleware::class)->group(function () {
     Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     Route::post('/placeorder', [CartController::class, 'postcheckout'] )->name('cart.checkoutview');
     Route::get('/checkoutvnpay', [CartController::class, 'checkoutvnpay'] )->name('cart.checkoutvnpay');
-    Route::get('/vnpay_return', [CartController::class, 'return'])->name('cart.return');
 
     Route::get('/shiping', [UserController::class, 'shiping'])->name('user.shiping');
     Route::get('/finishshiping/{order}', [UserController::class, 'finishshiping'])->name('user.finishshiping');

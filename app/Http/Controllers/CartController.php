@@ -122,9 +122,9 @@ class CartController extends Controller
             return view('user.finishcheckout');
         }else{
             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-            $vnp_Returnurl = "http://localhost:8080/user/checkoutvnpay";
-            $vnp_TmnCode = "NDB93I5F";//Mã website tại VNPAY 
-            $vnp_HashSecret = "43MULNM7R6ECXRH436BVEHF1V411ER6V"; //Chuỗi bí mật
+            $vnp_Returnurl = route('cart.checkoutvnpay');
+            $vnp_TmnCode = env('VNP_TMN_CODE');
+            $vnp_HashSecret = env('VNP_HASH_SECRET'); 
             
             $vnp_TxnRef = $order->id; 
             $vnp_OrderInfo = 'Thanh toán đơn';
