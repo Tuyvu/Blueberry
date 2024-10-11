@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ImgProduct;
-use App\Models\category;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -21,7 +20,7 @@ class Product extends Model
      */
     public function category()
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(Category::class);
     }
     /**
      * Get all of the comments for the Product
