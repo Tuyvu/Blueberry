@@ -6,11 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9 m-b-xs">
-                <a href="{{route('user.shiping')}}" class="btn btn-primary">Tất cả đơn hàng</a>
-                <a href="{{route('user.shipingWait')}}" class="btn btn-primary">Chờ xác nhận</a>
-                <a href="{{route('user.shipingship')}}" class="btn btn-primary">Đang vận chuyển</a>
-                <a href="{{route('user.Delivered')}}" class="btn btn-primary">Đã giao hàng</a>
-                <a href="{{route('user.Received')}}" class="btn btn-primary">Đã nhận</a>
+                <a href="{{route('user.shiping')}}" class="bb-btn-2">Tất cả đơn hàng</a>
+                <a href="{{route('user.shipingWait')}}" class="bb-btn-2">Chờ xác nhận</a>
+                <a href="{{route('user.shipingship')}}" class="bb-btn-2">Đang vận chuyển</a>
+                <a href="{{route('user.Delivered')}}" class="bb-btn-2">Đã giao hàng</a>
+                <a href="{{route('user.Received')}}" class="bb-btn-2">Đã nhận</a>
             </div>
         </div>
         <div class="card-body pt-0">
