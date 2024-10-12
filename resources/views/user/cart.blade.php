@@ -57,7 +57,8 @@
                                      </script>
                                     <td>
                                         <span class="totalprice">{{ number_format(TotalPriceItem($item->price,$item->quantity), 0, ',', '.') }} đ</span>
-                                        <input type="hidden" id="total-price-item-{{$item->id}}" class="total-price-item" value="{{ number_format(TotalPriceItem($item->price,$item->quantity), 0, ',', '.') }}" name="total-price-item">
+                                        <input type="hidden" id="total-price-item-{{$item->id}}" class="total-price-item" value="{{ TotalPriceItem($item->price,$item->quantity)}}" name="total-price-item">
+
                                     </td>
                                     <td>
                                         <div class="pro-remove">
