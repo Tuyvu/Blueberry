@@ -394,15 +394,15 @@
         document.querySelectorAll('#status:checked').forEach(function(checkedBox) {
             const inputId = checkedBox.getAttribute('data-id');
             const inputValue = document.getElementById(inputId).value;
+            console.log(inputValue);
             total += parseFloat(inputValue.replace(/\./g, '')) || 0;
         });
+        console.log(total);
         totalcheckout = parseFloat(freight)+total;
         if(document.getElementById('total-price')){
             document.getElementById('total-price').innerText = total.toLocaleString() + "đ";
             document.getElementById('total-price-input').value = total;
         }
-        
-
     }
 
 
