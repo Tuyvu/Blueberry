@@ -394,7 +394,7 @@
         document.querySelectorAll('#status:checked').forEach(function(checkedBox) {
             const inputId = checkedBox.getAttribute('data-id');
             const inputValue = document.getElementById(inputId).value;
-            total += parseFloat(inputValue) || 0;
+            total += parseFloat(inputValue)*1000 || 0;
         });
         totalcheckout = parseFloat(freight)+total;
         if(document.getElementById('total-price')){
