@@ -71,7 +71,7 @@ class CartController extends Controller
                 'product_id' => $product['product_id'],
                 'price' => $product['price'],
                 'discount' => 0,
-                'total_money' => $product['totalprice'],
+                'total_money' => $product['totalprice']*1000,
             ]);
             $item = Product::find($product['product_id']);
             $totalMoney += $product['totalprice'];
@@ -81,6 +81,7 @@ class CartController extends Controller
                 'totalprice' => $product['totalprice']
             ];
         }
+        $totalMoney = $totalMoney*1000;
         // $order->update(['total_money' => $totalMoney]);
         // dd($products);
         
