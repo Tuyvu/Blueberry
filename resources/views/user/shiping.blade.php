@@ -34,10 +34,10 @@
                                     <img src="{{asset('storage/images')}}/{{$detail->product->image}}" alt="" width="150px">
                                 </td>
                                 <td>{{$detail->product->name}}</td>
-                                <td>{{$detail->price}}</td>
+                                <td>{{number_format($detail->price, 0, ',', '.')}}đ</td>
                                 <td>{{$detail->total_money / $detail->price}}</td>
                                 @if ($item->pay==1)    
-                                <td>{{$item->total_money}}</td>
+                                <td>{{number_format($item->total_money, 0, ',', '.')}}đ</td>
                                 @else
                                 <td>0</td>
                                     
