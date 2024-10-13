@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     public function findProduct(Request $request)
     {
-        $products = Product::where('name', 'LIKE', '%' . $request->findproduct . '%')->paginate(10);
+        $products = Product::where('name', 'LIKE', '%' . $request->findproduct . '%')->paginate(12);
         return view('user.categoryfind', compact('products'));
     }
     public function detail($slug)
