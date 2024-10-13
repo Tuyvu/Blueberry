@@ -6,16 +6,16 @@
     <div class="bb-social-follow">
         <ul class="inner-links">
             <li>
-                <a href="javascript:void(0)">Fb</a>
+                <a href="https://www.facebook.com/">Fb</a>
             </li>
             <li>
-                <a href="javascript:void(0)">Li</a>
+                <a href="https://twitter.com/">TW</a>
             </li>
             <li>
-                <a href="javascript:void(0)">Dr</a>
+                <a href="https://instagram.com/">In</a>
             </li>
             <li>
-                <a href="javascript:void(0)">In</a>
+                <a href="https://linkedin.com/">Li</a>
             </li>
         </ul>
     </div>
