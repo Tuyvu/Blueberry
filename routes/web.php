@@ -17,8 +17,11 @@ use App\Http\Middleware\UserMiddleware;
 Route::get('/', [HomeController::class, 'home'])->name('user.index');
 Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('user.product');
 Route::get('/category/{name}', [HomeController::class, 'findCategory'])->name('user.findcategory');
-Route::post('/findproduct', [HomeController::class, 'findProduct'])->name('user.findProduct');
+Route::get('/findproduct', [HomeController::class, 'findProduct'])->name('user.findProduct');
 Route::get('/view', [UserController::class, 'view360'])->name('user.show');
+Route::get('/cskh', function () {
+    return view('user.an');
+})->name('user.cskh');
 
 Route::get('/login', [UserController::class, 'login'])->name('user.login');
 Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
