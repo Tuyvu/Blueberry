@@ -171,10 +171,10 @@
                                     <div class="bb-price">
                                         <div class="inner-price">
                                             @if ($item->sale_price)
-                                            <span class="new-price"> {{ number_format($product->sale_price, 0, ',', '.') }} đ</span>
-                                            <span class="old-price"> {{ number_format($product->price, 0, ',', '.') }} đ</span>
+                                            <span class="new-price"> {{ number_format($item->sale_price, 0, ',', '.') }} đ</span>
+                                            <span class="old-price"> {{ number_format($item->price, 0, ',', '.') }} đ</span>
                                             @else
-                                            <span class="new-price"> {{ number_format($product->price, 0, ',', '.') }} đ</span>
+                                            <span class="new-price"> {{ number_format($item->price, 0, ',', '.') }} đ</span>
                                             @endif
                                         </div>
                                         <span class="last-items">1 gói</span>
