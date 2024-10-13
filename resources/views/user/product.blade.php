@@ -52,16 +52,12 @@
                                         <i class="ri-star-fill"></i>
                                         <i class="ri-star-line"></i>
                                     </span>
-                                    <span class="bb-read-review">
-                                        |&nbsp;&nbsp;<a href="#bb-spt-nav-review">992 Ratings</a>
-                                    </span>
                                 </div>
-                                {!!$product->description!!}
                                 <div class="bb-single-price-wrap">
                                     <div class="bb-single-price">
                                         @if ($product->sale_price)
                                         <div class="price">
-                                            <h5>{{$product->sale_price}} <span>-78%</span></h5>
+                                            <h5>{{$product->sale_price}} <span>  -{{discountPercentage($product->price,$product->sale_price)}}%</span></h5>
                                         </div>
                                         <div class="mrp">
                                             <p>M.R.P. : <span>{{$product->price}}</span></p>
@@ -109,125 +105,14 @@
                             <li class="nav-item">
                                 <a class="nav-link active" data-bs-toggle="tab" href="#detail">Detail</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#information">Information</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#reviews">Reviews</a>
-                            </li>
+                            
                         </ul>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="detail">
                             <div class="bb-inner-tabs">
                                 <div class="bb-details">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, voluptatum.
-                                        Vitae dolores alias repellat eligendi, officiis, exercitationem corporis
-                                        quisquam delectus cum non recusandae numquam dignissimos molestiae magnam
-                                        hic natus. Cumque.</p>
-                                    <div class="details-info">
-                                        <ul>
-                                            <li>Any Product types that You want - Simple, Configurable</li>
-                                            <li>Downloadable/Digital Products, Virtual Products</li>
-                                            <li>Inventory Management with Backordered items</li>
-                                            <li>Flatlock seams throughout.</li>
-                                        </ul>
-                                        <ul>
-                                            <li><span>Highlights</span>Form FactorWhole</li>
-                                            <li><span>Seller</span>No Returns Allowed</li>
-                                            <li><span>Services</span>Cash on Delivery available</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="information">
-                            <div class="bb-inner-tabs">
-                                <div class="information">
-                                    <ul>
-                                        <li><span>Weight</span> 500 g</li>
-                                        <li><span>Dimensions</span> 17 × 15 × 3 cm</li>
-                                        <li><span>Color</span> black,yellow,red</li>
-                                        <li><span>Brand</span> Wonder Fort</li>
-                                        <li><span>Form Factor</span>Whole</li>
-                                        <li><span>Quantity</span>1</li>
-                                        <li><span>Container Type</span>Pouch</li>
-                                        <li><span>Shelf Life</span>12 Months</li>
-                                        <li><span>Ingredients</span>Dalchini, Dhaniya, Badi Elaichi, Laung</li>
-                                        <li><span>Other Features</span>Ingredient Type: Vegetarian</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="reviews">
-                            <div class="bb-inner-tabs">
-                                <div class="bb-reviews">
-                                    <div class="reviews-bb-box">
-                                        <div class="inner-image">
-                                            <img src="{{asset('assets')}}/img/reviews/1.jpg" alt="img-1">
-                                        </div>
-                                        <div class="inner-contact">
-                                            <h4>Mariya Lykra</h4>
-                                            <div class="bb-pro-rating">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-line"></i>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, hic
-                                                expedita asperiores eos neque cumque impedit quam, placeat
-                                                laudantium soluta repellendus possimus a distinctio voluptate
-                                                veritatis nostrum perspiciatis est! Commodi!</p>
-                                        </div>
-                                    </div>
-                                    <div class="reviews-bb-box">
-                                        <div class="inner-image">
-                                            <img src="{{asset('assets')}}/img/reviews/2.jpg" alt="img-2">
-                                        </div>
-                                        <div class="inner-contact">
-                                            <h4>Saddika Alard</h4>
-                                            <div class="bb-pro-rating">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-line"></i>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, hic
-                                                expedita asperiores eos neque cumque impedit quam, placeat
-                                                laudantium soluta repellendus possimus a distinctio voluptate
-                                                veritatis nostrum perspiciatis est! Commodi!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bb-reviews-form">
-                                    <h3>Add a Review</h3>
-                                    <div class="bb-review-rating">
-                                        <span>Your ratting :</span>
-                                        <div class="bb-pro-rating">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                        </div>
-                                    </div>
-                                    <form action="#">
-                                        <div class="input-box">
-                                            <input type="text" placeholder="Name" name="your-name">
-                                        </div>
-                                        <div class="input-box">
-                                            <input type="email" placeholder="Email" name="your-email">
-                                        </div>
-                                        <div class="input-box">
-                                            <textarea name="your-comment"
-                                                placeholder="Enter Your Comment"></textarea>
-                                        </div>
-                                        <div class="input-button">
-                                            <a href="{{route('cart.view')}}" class="bb-btn-2">Thêm vào giỏ hàng</a>
-                                        </div>
-                                    </form>
+                                    {!!$product->description!!}
                                 </div>
                             </div>
                         </div>
