@@ -17,7 +17,7 @@
                         </div>
                         <div class="cols">
                             <div class="header-search">
-                                <form class="bb-btn-group-form" action="{{route('user.findProduct')}}" method="POST">
+                                <form class="bb-btn-group-form" action="{{route('user.findProduct')}}" method="GET">
                                     @csrf
                                     <input class="form-control bb-search-bar" name="findproduct" placeholder="Tìm kiếm sản phẩm..."
                                         type="text">
@@ -98,7 +98,11 @@
                                 </li>
                                 <li class="nav-item bb-main-dropdown">
                                     <a class="nav-link bb-dropdown-item" href="javascript:void(0)">Danh mục</a>
-                                    <x-categoty-nav/>
+                                    <ul class="mega-menu">
+                                        <li>
+                                            <x-categoty-nav/>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('user.show')}}">Xem của hàng</a>
@@ -120,11 +124,16 @@
             <div class="bb-menu-content">
                 <ul>
                     <li>
-                        <a href="index-2.html">Trang chủ</a>
+                        <a href="{{route('user.index')}}">Trang chủ</a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0)">Danh mục</a>
+                    {{-- <li>
+                        <a class="nav-link bb-dropdown-item" href="javascript:void(0)">Danh mục</a>
+                        
+                    </li> --}}
+                    <li class=""><span class="menu-toggle"></span>
+                        <a href="javascript:void(0)">Categories</a>
                         <x-categoty-nav/>
+                    </li>
                 </ul>
             </div>
             <div class="header-res-lan-curr">
@@ -133,16 +142,16 @@
                     <div class="header-top-social">
                         <ul class="mb-0">
                             <li class="list-inline-item">
-                                <a href="#"><i class="ri-facebook-fill"></i></a>
+                                <a href="https://www.facebook.com/"><i class="ri-facebook-fill"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#"><i class="ri-twitter-fill"></i></a>
+                                <a href="https://twitter.com/"><i class="ri-twitter-fill"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#"><i class="ri-instagram-line"></i></a>
+                                <a href="https://instagram.com/"><i class="ri-instagram-line"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                                <a href="https://linkedin.com/"><i class="ri-linkedin-fill"></i></a>
                             </li>
                         </ul>
                     </div>
