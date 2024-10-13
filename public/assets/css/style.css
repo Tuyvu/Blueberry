@@ -1726,7 +1726,7 @@ select {
           align-items: center;
 }
 .bb-mobile-menu .bb-menu-inner .bb-menu-content ul li .menu-toggle::before {
-  content: "+";
+  content: "\003E";
   margin-left: auto;
   font-weight: 500;
   color: #686e7d;
