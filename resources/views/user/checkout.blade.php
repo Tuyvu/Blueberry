@@ -95,10 +95,10 @@
                                         <h4><a href="javascript:void(0)">{{$item['product']->name}}</a></h4>
                                         <div class="inner-price">
                                             @if ($item['product']->sale_price)
-                                                <span class="new-price">{{$item['product']->sale_price}}</span>
-                                                <span class="old-price">{{$item['product']->price}}</span>
+                                                <span class="new-price">{{number_format($item['product']->sale_price, 0, ',', '.')}}đ</span>
+                                                <span class="old-price">{{number_format($item['product']->price, 0, ',', '.')}}đ</span>
                                                 @else
-                                                <span class="new-price">{{$item['product']->price}}</span>
+                                                <span class="new-price">{{number_format($item['product']->price, 0, ',', '.')}}đ</span>
                                                 @endif
                                         </div>
                                         <div class="inner-price">
@@ -116,7 +116,7 @@
                         </div>
                         <div class="checkout-summary">
                             <ul>
-                                <li><span class="left-item">Tổng tiền hàng</span><span>{{$totalMoney}}</span>
+                                <li><span class="left-item">Tổng tiền hàng</span><span>{{number_format($totalMoney, 0, ',', '.')}}đ</span>
                                     <input type="hidden" id="total-price1-input" name="total-price" value="{{$totalMoney}}"></li></li>
                                 <li><span class="left-item">Cước vận chuyển</span><span id="shipping-fee">30,000đ</span></li>
                                 <li>
