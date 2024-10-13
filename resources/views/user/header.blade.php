@@ -134,6 +134,9 @@
                         <a href="javascript:void(0)">Categories</a>
                         <x-categoty-nav/>
                     </li>
+                    <li>
+                        <a href="{{route('user.show')}}">Xem của hàng</a>
+                    </li>
                 </ul>
             </div>
             <div class="header-res-lan-curr">
