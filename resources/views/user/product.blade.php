@@ -57,14 +57,15 @@
                                     <div class="bb-single-price">
                                         @if ($product->sale_price)
                                         <div class="price">
-                                            <h5>{{$product->sale_price}} <span>  -{{discountPercentage($product->price,$product->sale_price)}}%</span></h5>
+                                           
+                                            <h5> {{ number_format($product->sale_price, 0, ',', '.') }} đ <span>  -{{discountPercentage($product->price,$product->sale_price)}}%</span></h5>
                                         </div>
                                         <div class="mrp">
-                                            <p>M.R.P. : <span>{{$product->price}}</span></p>
+                                            <p>M.R.P. : <span> {{ number_format($product->price, 0, ',', '.') }} đ</span></p>
                                         </div>
                                         @else
                                         <div class="price">
-                                            <h5>{{$product->price}}</h5>
+                                            <h5> {{ number_format($product->price, 0, ',', '.') }} đ</h5>
                                         </div>
                                         @endif
                                     </div>
