@@ -104,7 +104,7 @@
                     <div class="bb-pro-tab">
                         <ul class="bb-pro-tab-nav nav">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#detail">Detail</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#detail">Thông tin sản phẩm</a>
                             </li>
                             
                         </ul>
