@@ -56,12 +56,13 @@
                                     <div class="bb-price">
                                         <div class="inner-price">
                                             @if ($item->sale_price)
-                                            <span class="new-price">{{$item->sale_price}}</span>
-                                            <span class="old-price">{{$item->price}}</span>
+                                            <span class="new-price"> {{ number_format($item->sale_price, 0, ',', '.') }} đ</span>
+                                            <span class="old-price"> {{ number_format($item->price, 0, ',', '.') }} đ</span>
                                             @else
-                                            <span class="new-price">{{$item->price}}</span>
+                                            <span class="new-price"> {{ number_format($item->price, 0, ',', '.') }} đ</span>
                                             @endif
                                         </div>
+                                        <span class="last-items">1 gói</span>
                                     </div>
                                 </div>
                             </div>
