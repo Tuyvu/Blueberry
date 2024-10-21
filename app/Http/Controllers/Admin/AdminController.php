@@ -66,7 +66,7 @@ class AdminController extends Controller
     }
     public function customer()
     {
-        $user = User::where('role_id', 3)->paginate(2);
+        $user = User::where('role_id', 3)->paginate(10);
         return view('admin.customer.index',compact('user'));
     }
     public function uploadimage()
