@@ -51,7 +51,7 @@
                                             <i class="ri-star-line"></i>
                                         </span>
                                     </div>
-                                    <h4 class="bb-pro-title"><a href="product-left-sidebar.html">{{$item->name}}</a>
+                                    <h4 class="bb-pro-title"><a href="{{route('user.product',$item->slug)}}">{{$item->name}}</a>
                                     </h4>
                                     <div class="bb-price">
                                         <div class="inner-price">
