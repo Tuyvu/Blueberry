@@ -113,10 +113,10 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>#</th>
-                                            <th>image</th>  
+                                            <th>ảnh</th>  
                                             <th>tên</th>
-                                            <th>price</th>
-                                            <th>sale_price</th>
+                                            <th>giá</th>
+                                            <th>giá KM</th>
                                             <th>số lượng</th>
                                             <th>danh mục</th>
                                         </tr><!--end tr-->
