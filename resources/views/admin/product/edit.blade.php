@@ -45,7 +45,7 @@
                                 <div class="form-group @error('price') has-error @enderror">
                                     <div class="col-md-6">
                                         <label for="price">Giá sản phẩm</label>
-                                        <input type="text" class="form-control" id="price" name="price" placeholder="giá sản phẩm" value="{{ old('price', $product->price) }}">
+                                        <input type="text" class="form-control" id="price" name="price" placeholder="giá sản phẩm" value="{{ old('price', $product->price) }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                         @error('price')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
@@ -53,7 +53,7 @@
 
                                     <div class="col-md-6">
                                         <label for="sale_price">Giá khuyến mại</label>
-                                        <input type="text" class="form-control" id="sale_price" name="sale_price" placeholder="giá khuyến mại" value="{{ old('sale_price', $product->sale_price) }}">
+                                        <input type="text" class="form-control" id="sale_price" name="sale_price" placeholder="giá khuyến mại" value="{{ old('sale_price', $product->sale_price) }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                         @error('sale_price')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
@@ -61,7 +61,7 @@
 
                                     <div class="col-md-6">
                                         <label for="discount">Số lượng</label>
-                                        <input type="text" class="form-control" id="discount" name="discount" placeholder="số lượng" value="{{ old('discount',$product->discount) }}">
+                                        <input type="text" class="form-control" id="discount" name="discount" placeholder="số lượng" value="{{ old('discount',$product->discount) }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                         @error('discount')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
