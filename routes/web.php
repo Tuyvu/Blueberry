@@ -32,6 +32,7 @@ Route::get('/logon', [AdminController::class, 'logon'])->name('logon');
 Route::post('/logon', [AdminController::class, 'postlogon'])->name('postlogon');
 Route::get('/logoutadmin', [AdminController::class, 'logout'])->name('admin.logout');
 
+Route::get('/connect', [ForgotPasswordController::class, 'connectemail'])->name('connect');
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
