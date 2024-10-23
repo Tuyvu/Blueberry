@@ -25,11 +25,11 @@
     
                     <th>#</th>
                     <th>tên</th>
-                    <th>price</th>
-                    <th>sale_price</th>
+                    <th>giá</th>
+                    <th>giá KM</th>
                     <th>số lượng</th>
                     <th>danh mục</th>
-                    <th>image</th>
+                    <th>ảnh</th>
                     <th></th>
                     <th></th>
                 </tr>
