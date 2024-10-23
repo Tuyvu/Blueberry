@@ -26,7 +26,7 @@
                                     <thead class="table-light">
                                       <tr>
                                         <th>#</th>
-                                        <th>image</th>
+                                        <th>ảnh</th>
                                         <th>Tên</th>
                                         <th>Giá</th>
                                         <th>Số lượng</th>
