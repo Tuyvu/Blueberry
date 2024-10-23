@@ -58,7 +58,6 @@
                                     <td>
                                         <span class="totalprice">{{ number_format(TotalPriceItem($item->price,$item->quantity), 0, ',', '.') }} đ</span>
                                         <input type="hidden" id="total-price-item-{{$item->id}}" class="total-price-item" value="{{ TotalPriceItem($item->price,$item->quantity)}}" name="total-price-item">
-
                                     </td>
                                     <td>
                                         <div class="pro-remove">
@@ -123,6 +122,42 @@
             let selectedProductsJson = JSON.stringify(selectedProducts);
             document.getElementById('selectedProductsJson').value = selectedProductsJson;
         }
+        document.addEventListener('DOMContentLoaded', function() {
+        // Disable the checkout button by default
+        const checkoutBtn = document.getElementById('checkoutForm');
+        checkoutBtn.disabled = true;
+
+        // Update total price and toggle checkout button based on checkbox selection
+        document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                updateTotalPrice();
+                toggleCheckoutButton();
+            });
+        });
+
+        // Toggle checkout button based on checkbox selection
+        function toggleCheckoutButton() {
+            const selectedItems = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            checkoutBtn.disabled = selectedItems === 0;
+        }
+
+        // Update total price based on selected checkboxes
+        function updateTotalPrice() {
+            let totalPrice = 0;
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(function(checkbox) {
+                let row = checkbox.closest('tr');
+                let totalpriceItem = parseFloat(row.querySelector('.total-price-item').value);
+                totalPrice += totalpriceItem;
+            });
+            document.getElementById('total-price').innerText = totalPrice.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('total-price-input').value = totalPrice;
+        }
+
+        // Handle form submission
+        document.getElementById('checkoutForm').addEventListener('click', function(event) {
+            submitCheckout(event);
+        });
+    });
         </script>
     </div>
 </section>
