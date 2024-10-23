@@ -40,7 +40,7 @@
                         <tr>
                             <td>{{ $order->firstItem() + $index }}</td>
                             <td>{{$item->id}}</td>
-                            <td>{{$item->total_money}}</td>
+                            <td>{{ number_format($item->total_money, 0, ',', '.') }} đ</td>
                             <td>{{$item->created_at}}</td>
                             <td>{{$item->address}}</td>
                             <td><a href="{{Route('order.confirmship',$item)}}" class="btn btn-success">Xem</a></td>
