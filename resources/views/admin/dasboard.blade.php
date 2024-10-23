@@ -130,7 +130,11 @@
                                             </td>
                                             <td>{{$item->name}}</td>
                                             <td>{{ number_format($item->price, 0, ',', '.') }}đ</td>
-                                            <td>{{ number_format($item->sale_price, 0, ',', '.') }}đ</td>
+                                            @if ($item->sale_price)
+                                                <td>{{ number_format($item->sale_price, 0, ',', '.') }}đ</td>
+                                            @else
+                                                <td></td>
+                                            @endif
                                             <td>{{$item->discount}}</td>
                                             <td>{{$item->category->name}}</td>
                                         </tr>
