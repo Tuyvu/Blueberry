@@ -191,7 +191,7 @@ class CartController extends Controller
         }
     }
     public function checkoutvnpay(Request $request) {
-            // dd($request->vnp_TxnRef);  
+        if ($request->vnp_TransactionStatus == '00') {
             $user = Auth::user();
             $order = Orders::where('id', $request->vnp_TxnRef)->first();
             $order->update(['pay' => 2]);
@@ -201,12 +201,16 @@ class CartController extends Controller
                     Cart_items::where('cart_id', $cart->id)->where('product_id', $item->product_id)->delete();
                     $quantity = $item->total_money / $item->price;
                     $product = Product::where('id', $item->product_id)->first();
-                    $quantity = $product->discount - $quantity;
-                    $product->update(['discount' => $quantity]);
+                    $newQuantity = $product->discount - $quantity;
+                    $product->update(['discount' => $newQuantity]);
                 }
             }
-            return view('user.finishcheckout'); 
+    
+            return view('user.finishcheckout');
+        } else {
+            return redirect()->route('cart.view');
         }
+    }
     
     
 }
