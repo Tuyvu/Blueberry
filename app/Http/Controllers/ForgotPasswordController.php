@@ -13,39 +13,37 @@ class ForgotPasswordController extends Controller
     {
         return view('auth.forgot-password');
     }
-
-    // Xử lý yêu cầu gửi link đặt lại mật khẩu qua email
+    public function connectemail()
+    {
+        return view('auth.connect-password');
+    }
     public function sendResetLinkEmail(Request $request)
     {
-        // dd($request->all());
         $request->validate(['email' => 'required|email']);
 
         $user = User::where('email', $request->email)->first();
         if (!$user) {
-                    dd('email chưa đăng ký');
-                    return back()->withErrors(['email' => 'Email này không tồn tại trong hệ thống.']);
-                }
+            return back()->withErrors(['email' => 'Email này không tồn tại trong hệ thống.']);
+        }
         $status = Password::sendResetLink(
             $request->only('email')
         );
-        // dd($status);
-
-        return $status === Password::RESET_LINK_SENT
-                    ? back()->with(['status' => __($status)])
-                    : back()->withErrors(['email' => __($status)]);
+        if ($status === Password::RESET_LINK_SENT) {
+            return redirect()->route('connect')->with('status', __($status));
+        } else {
+            return back()->withErrors(['email' => __($status)]);
+        }
     }
 
-    // Hiển thị form nhập mật khẩu mới sau khi người dùng nhấp vào link đặt lại mật khẩu
+
     public function showResetForm(Request $request,$token)
     {
         $email = $request->get('email');
         return view('auth.reset-password', compact('token','email'));
     }
 
-    // Xử lý việc đặt lại mật khẩu
     public function reset(Request $request)
     {
-        // dd($request->all());
 
         $request->validate([
             'password' => [
