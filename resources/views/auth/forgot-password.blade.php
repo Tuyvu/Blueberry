@@ -23,7 +23,7 @@
                             <input type="email" id="email" name="email" placeholder="Nhập Email">
                         </div>
                         @error('email')
-                        <span>{{ $message }}</span>
+                        <span style="color: red;">{{ $message }}</span>
                         @enderror
                         <div class="bb-login-button">
                             <button class="bb-btn-2" type="submit">Xác nhận</button>
