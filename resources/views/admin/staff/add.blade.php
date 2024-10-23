@@ -25,14 +25,14 @@
                                 <div class="form-group @error('name') has-error @enderror">
                                     <div class="col-md-6">
                                         <label for="productname">Họ</label>
-                                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Họ" onkeyup="ChangeToSlug()" value="{{ old('lastname') }}">
+                                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Họ" value="{{ old('lastname') }}">
                                         @error('lastname')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="productname">Tên nhân viên</label>
-                                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="tên nhân viên" onkeyup="ChangeToSlug()" value="{{ old('firstname') }}">
+                                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="tên nhân viên" value="{{ old('firstname') }}">
                                         @error('firstname')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
@@ -43,14 +43,14 @@
                                 <div class="form-group @error('price') has-error @enderror">
                                     <div class="col-md-6">
                                         <label for="productname">email</label>
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="email" onkeyup="ChangeToSlug()" value="{{ old('email') }}">
+                                        <input type="text" class="form-control" id="email" name="email" placeholder="email" value="{{ old('email') }}">
                                         @error('email')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="productname">SDT</label>
-                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" onkeyup="ChangeToSlug()" value="{{ old('phone') }}">
+                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="{{ old('phone') }}">
                                         @error('phone')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
@@ -58,7 +58,7 @@
 
                                     <div class="col-md-6">
                                         <label for="productname">Địa chỉ</label>
-                                        <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" onkeyup="ChangeToSlug()" value="{{ old('address') }}">
+                                        <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" value="{{ old('address') }}">
                                         @error('address')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
@@ -69,7 +69,7 @@
                                 <div class="form-group @error('price') has-error @enderror">
                                     <div class="col-md-6">
                                         <label for="productname">Mật khẩu</label>
-                                        <input type="text" class="form-control" id="password" name="password" placeholder="Mật khẩu" onkeyup="ChangeToSlug()" value="{{ old('password') }}">
+                                        <input type="text" class="form-control" id="password" name="password" placeholder="Mật khẩu" value="{{ old('password') }}">
                                         @error('password')
                                             <span class="help-block" style="color: red;">{{ $message }}</span>
                                         @enderror
