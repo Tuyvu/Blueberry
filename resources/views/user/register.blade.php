@@ -14,7 +14,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <form action="" method="post">
+                            <form action="" method="post" onsubmit="return validateForm()">
                                 @csrf
                                 <!-- First Name -->
                                 <div class="bb-register-wrap bb-register-width-50">
@@ -41,7 +41,7 @@
                                 <!-- Email -->
                                 <div class="bb-register-wrap bb-register-width-50">
                                     <label>Email*</label>
-                                    <input type="email" name="email" placeholder="Nhập Email" value="{{ old('email') }}">
+                                    <input type="email" id="email" name="email" placeholder="Nhập Email" value="{{ old('email') }}">
                                     @if ($errors->has('email'))
                                         <div class="error-message" style="color: red;">
                                             {{ $errors->first('email') }}
@@ -52,7 +52,7 @@
                                 <!-- Phone Number -->
                                 <div class="bb-register-wrap bb-register-width-50">
                                     <label>SĐT*</label>
-                                    <input type="text" name="phone" placeholder="Nhập số điện thoại" value="{{ old('phone') }}">
+                                    <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" value="{{ old('phone') }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                     @if ($errors->has('phone'))
                                         <div class="error-message" style="color: red;">
                                             {{ $errors->first('phone') }}
@@ -62,11 +62,12 @@
                                 <div class="bb-register-wrap bb-register-width-50">
                                     <label>Tỉnh/Thành phố*</label>
                                     <div class="custom-select">
-                                        <div class="select"><select class="hide-select" name="city" id="city-select">
-                                            <option value="" id="city-select-one" disabled selected>Chọn thành phố</option>
-                                            @foreach ($cities as $item)
-                                            <option value="{{ $item }}">{{ $item }}</option>
-                                            @endforeach
+                                        <div class="select">
+                                            <select class="hide-select" name="city" id="city-select">
+                                                <option value="" id="city-select-one" disabled selected>Chọn thành phố</option>
+                                                @foreach ($cities as $item)
+                                                    <option value="{{ $item }}">{{ $item }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -86,8 +87,8 @@
                                     <label for="password">Mật khẩu*</label>
                                     <div style="position: relative;">
                                         <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
-                                        <span id="togglePassword" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
-                                            👁️
+                                        <span id="togglePassword" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 24px;">
+                                            <i class="ri-eye-close-fill"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -98,9 +99,9 @@
                                 @endif
                         
                                 <!-- Submit Button -->
-                                <div class="bb-login-button">
+                                <div class="bb-register-button">
                                     <button type="submit" class="bb-btn-2">Đăng ký</button>
-                                    <a class="" href="{{route('user.login')}}">Đăng nhập</a>
+                                    <a class="pt-1 px-4" href="{{route('user.login')}}">Đăng nhập</a>
                                 </div>
                                 
                             </form>
@@ -117,6 +118,38 @@
         const passwordField = document.getElementById('password');
         const passwordType = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordField.setAttribute('type', passwordType);
-        this.textContent = passwordType === 'password' ? '👁️' : '🙈'; // Chuyển đổi icon
+        this.innerHTML = passwordType === 'password' 
+            ? '<i class="ri-eye-close-fill"></i>' 
+            : '<i class="ri-eye-line"></i>';
+    });
+
+    function validateForm() {
+        const emailField = document.getElementById('email');
+        const phoneField = document.getElementById('phone');
+        const emailValue = emailField.value.trim();
+        const phoneValue = phoneField.value.trim();
+
+        // Check email
+        if (!/^[\w-\.]+@gmail\.com$/.test(emailValue)) {
+            alert("Email phải có định dạng '@gmail.com'.");
+            return false; // Prevent form submission
+        }
+
+        // Check phone number
+        if (phoneValue.length !== 10) {
+            alert("Số điện thoại phải đủ 10 số.");
+            return false; // Prevent form submission
+        }
+
+        return true; // Allow form submission
+    }
+
+    // Add change event listener to phone input
+    document.getElementById('phone').addEventListener('change', function () {
+        const phoneValue = this.value.trim();
+        if (phoneValue.length !== 10) {
+            alert("Số điện thoại phải đủ 10 số.");
+            this.value = ''; // Clear the input field
+        }
     });
 </script>
