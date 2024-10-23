@@ -41,9 +41,9 @@
                                                 <img src="{{asset('storage/images')}}/{{$item->product->image}}" alt="" width="150px">
                                             </td>
                                             <td>{{$item->product->name}}</td>
-                                            <td>{{$item->price}}</td>
+                                            <td>{{ number_format($item->price, 0, ',', '.') }} đ</td>
                                             <td>{{$item->total_money/$item->price}}</td>
-                                            <td>{{$item->total_money}}</td>
+                                            <td>{{ number_format($item->total_money, 0, ',', '.') }}đ</td>
                                         </tr>
                                         @empty
                                         <tr>
@@ -75,25 +75,25 @@
                                 @if ($order->shiptype == '1')
                                     <div class="d-flex justify-content-between">
                                         <p class="text-body fw-semibold">Tiền hàng :</p>
-                                        <p class="text-body-emphasis fw-semibold">{{$order->total_money-15000}}đ</p>
+                                        <p class="text-body-emphasis fw-semibold">{{ number_format($order->total_money-15000, 0, ',', '.') }}đ</p>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="text-body fw-semibold">Phí vận chuyển :</p>
-                                        <p class="text-danger fw-semibold">15000đ</p>
+                                        <p class="text-danger fw-semibold">15.000đ</p>
                                     </div>
                                     @else
                                     <div class="d-flex justify-content-between">
                                         <p class="text-body fw-semibold">Tiền hàng :</p>
-                                        <p class="text-body-emphasis fw-semibold">{{$order->total_money-30000}}đ</p>
+                                        <p class="text-body-emphasis fw-semibold">{{ number_format($order->total_money-30000, 0, ',', '.') }}đ</p>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="text-body fw-semibold">Phí vận chuyển :</p>
-                                        <p class="text-danger fw-semibold">30000đ</p>
+                                        <p class="text-danger fw-semibold">30.000đ</p>
                                     </div>
                                         @endif
                                         <div class="d-flex justify-content-between">
                                             <p class="text-body fw-semibold">Tổng thanh toán :</p>
-                                            <p class="text-body-emphasis fw-semibold">{{$order->total_money}}</p>
+                                            <p class="text-body-emphasis fw-semibold">{{ number_format($order->total_money, 0, ',', '.') }} đ</p>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             @if ($order->pay == '1')
@@ -107,7 +107,7 @@
                             <hr class="hr-dashed">
                             <div class="d-flex justify-content-between">
                                 @if ($order->pay == 1)
-                                <h4 class="mb-0">Tổng thu   : {{$order->total_money}}đ</h4>
+                                <h4 class="mb-0">Tổng thu   : {{ number_format($order->total_money, 0, ',', '.') }} đ</h4>
                                 @else
                                 <h4 class="mb-0">Tổng thu  : 0đ</h4>
                                 @endif</p>
@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between mb-2">
                                     <p class="text-body fw-semibold"><i class="iconoir-dollar-circle text-secondary fs-20 align-middle me-1"></i>Tổng thanh toán :</p>
-                                    <p class="text-body-emphasis fw-semibold"><span class="text-primary">{{$order->total_money}}</p>
+                                    <p class="text-body-emphasis fw-semibold"><span class="text-primary">{{ number_format($order->total_money, 0, ',', '.') }}đ</p>
                                 </div>
                                 <div class="d-flex justify-content-between mb-2">
                                     <p class="text-body fw-semibold"><i class="iconoir-calendar text-secondary fs-20 align-middle me-1"></i>Ngày đặt :</p>
