@@ -32,8 +32,8 @@
                             <label for="password">Mật khẩu*</label>
                             <div style="position: relative;">
                                 <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
-                                <span id="togglePassword" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
-                                    👁️
+                                <span id="togglePassword" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 24px;">
+                                    <i class="ri-eye-close-fill"></i>
                                 </span>
                             </div>
                         </div>
@@ -52,9 +52,11 @@
 </section>
 <script>
     document.getElementById('togglePassword').addEventListener('click', function () {
-        const passwordField = document.getElementById('password');
-        const passwordType = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordField.setAttribute('type', passwordType);
-        this.textContent = passwordType === 'password' ? '👁️' : '🙈'; // Chuyển đổi icon
-    });
+    const passwordField = document.getElementById('password');
+    const passwordType = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', passwordType);
+    this.innerHTML = passwordType === 'password' 
+        ? '<i class="ri-eye-close-fill"></i>' 
+        : '<i class="ri-eye-line"></i>';
+});
 </script>
