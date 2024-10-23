@@ -24,8 +24,7 @@
                                 <div class="card-body"> 
                                     <div class="row d-flex justify-content-center ">
                                         <div class="col-12 col-md-6">
-                                            <h2 class="fs-22 mt-0 mb-1 fw-bold">{{$total}}đ</h2>
-                                            <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i>8.5%</span> New Sessions Today</p>                                           
+                                            <h2 class="fs-22 mt-0 mb-1 fw-bold">{{ number_format($total, 0, ',', '.') }}đ</h2>                                        
                                         </div><!--end col-->
                                     </div><!--end row-->  
                                 </div><!--end card-body--> 
@@ -49,7 +48,7 @@
                                         <div class="card-body">
                                             <div class="row align-items-center">
                                                 <div class="col text-center">                                                                        
-                                                    <span class="fs-18 fw-semibold">{{$totaltoday}}đ</span>      
+                                                    <span class="fs-18 fw-semibold">{{ number_format($totaltoday, 0, ',', '.') }} đ</span>      
                                                     <h6 class="text-uppercase text-muted mt-2 m-0">Doanh thu hôm nay</h6>                
                                                 </div><!--end col-->
                                             </div> <!-- end row -->
@@ -130,8 +129,8 @@
                                                 <img src="{{asset('storage/images')}}/{{$item->image}}" alt="" width="50px">
                                             </td>
                                             <td>{{$item->name}}</td>
-                                            <td>{{$item->price}}</td>
-                                            <td>{{$item->sale_price}}</td>
+                                            <td>{{ number_format($item->price, 0, ',', '.') }}đ</td>
+                                            <td>{{ number_format($item->sale_price, 0, ',', '.') }}đ</td>
                                             <td>{{$item->discount}}</td>
                                             <td>{{$item->category->name}}</td>
                                         </tr>
@@ -173,7 +172,7 @@
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$item->id}}</td>
-                                            <td>{{$item->total_money}}</td>
+                                            <td>{{ number_format($item->total_money, 0, ',', '.') }}đ</td>
                                             <td>{{$item->created_at}}</td>
                                             <td><a href="{{Route('order.confirm',$item)}}" class="btn btn-success">xem</a></td>
                                         </tr>
