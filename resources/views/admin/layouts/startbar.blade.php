@@ -1,7 +1,7 @@
 <div class="startbar d-print-none">
     <!--start brand-->
     <div class="brand">
-        <a href="index.html" class="logo">
+        <a href="{{route('admin.index')}}" class="logo">
             <span>
                 <img src="{{asset('assets')}}/img/logo/logo.png" alt="logo-small" class="logo-sm">
             </span>
