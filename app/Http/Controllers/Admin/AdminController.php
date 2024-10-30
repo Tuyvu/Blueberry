@@ -104,6 +104,11 @@ class AdminController extends Controller
         }
        return redirect()->route('sadmin.staff');
     }
+    public function staffdelete($id)
+    { 
+        User::where('id', $id)->delete();
+        return redirect()->route('sadmin.staff')->with('success', 'Xóa thành công');
+    } 
 
     
 }
