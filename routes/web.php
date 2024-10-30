@@ -86,5 +86,5 @@ Route::prefix('sadmin')->middleware(SAdminMiddleware::class)->group(function () 
     Route::get('/staff', [AdminController::class, 'staff'])->name('sadmin.staff');
     Route::get('/addstaff', [AdminController::class, 'addstaff'])->name('sadmin.addstaff');
     Route::post('/addstaff', [AdminController::class, 'postaddstaff'])->name('postsadmin.addstaff');
-
+    Route::get('/staff-foredelete/{id}', [AdminController::class, 'staffdelete'])->name('staff.delete');
 });
