@@ -39,8 +39,10 @@ class OrderController extends Controller
     }
     public function finishOrdership($id)
     {
-        // dd($id);
-        $order = Orders::where('id', $id)->update(['status' => 2])->update(['pay' => 2]);
+        Orders::where('id', $id)->update([
+            'status' => 2,
+            'pay' => 2
+        ]);
         return redirect()->route('admin.ordership');
     }
     public function getAllOrdership()
