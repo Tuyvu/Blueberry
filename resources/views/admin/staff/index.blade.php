@@ -26,15 +26,17 @@
                             <th>tên</th>
                             <th>email</th>
                             <th>Số điện thoại</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         @forelse ($user as $index =>$item)
                         <tr>
-                            <td>{{ $user->firstItem() + $index }}</td>
+                            <td>{{$user->firstItem() + $index}}</td>
                             <td>{{$item->firstname}} {{$item->lastname}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->phone}}</td>
+                            <td><a href="{{Route('staff.delete',$item->id)}}" onclick="return confirmDelete();" class="btn btn-success">xóa</a></td>
                         </tr>
                         @empty
                         <tr>
@@ -47,7 +49,11 @@
                 {!! $user->links('pagination::bootstrap-5') !!}
             </div>
         </div><!-- container -->
-
+        <script>
+            function confirmDelete() {
+                return confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?");
+            }
+        </script>
         <!--Start Rightbar-->
         <!--Start Rightbar/offcanvas-->
 
