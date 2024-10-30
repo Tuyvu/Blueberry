@@ -104,7 +104,7 @@
                     <div class="bb-pro-tab">
                         <ul class="bb-pro-tab-nav nav">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#detail">Thông tin sản phẩm</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#detail">Detail</a>
                             </li>
                             
                         </ul>
@@ -166,7 +166,7 @@
                                             <i class="ri-star-line"></i>
                                         </span>
                                     </div>
-                                    <h4 class="bb-pro-title"><a href="product-left-sidebar.html">{{$item->name}}</a>
+                                    <h4 class="bb-pro-title"><a href="{{route('user.product',$item->slug)}}">{{$item->name}}</a>
                                     </h4>
                                     <div class="bb-price">
                                         <div class="inner-price">
