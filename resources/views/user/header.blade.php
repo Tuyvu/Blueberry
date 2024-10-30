@@ -55,6 +55,7 @@
                                             @else
                                             <li><a class="dropdown-item" href="{{route('user.register')}}">Tạo tài khoản</a></li>
                                             <li><a class="dropdown-item" href="{{route('user.login')}}">Đăng nhập</a></li>
+                                            <li><a class="dropdown-item" href="{{route('logon')}}">Admin</a></li>
                                             @endif
                                     
                                         </ul>
