@@ -8,6 +8,9 @@
                         <div class="col-12">
                             <div class="section-title bb-center">
                                 <div class="section-detail">
+                                    <a href="{{route('user.index')}}">
+                                        <img src="{{asset('assets')}}/img/logo/logo.png" alt="logo" style="margin-bottom: 26px;margin-right: 8px;" class="light">
+                                    </a>
                                     <h2 class="bb-title">Đăng <span>Ký</span></h2>
                                     <p>Nơi tốt nhất để mua sản phẩm sạch</p>
                                 </div>
