@@ -536,7 +536,7 @@ textarea::placeholder {
 }
 .section-title .section-detail p {
   max-width: 400px;
-  margin: 10px 0 0 0;
+/*   margin: 10px 0 0 0; */
   font-size: 14px;
   color: #686e7d;
   line-height: 18px;
