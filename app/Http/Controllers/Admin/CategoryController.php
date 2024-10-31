@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 
@@ -43,6 +44,11 @@ class CategoryController extends Controller
     }
     public function destroy(Category $category)
     {
+        $productCount = Product::where('category_id', $category->id)->count();
+
+        if ($productCount > 0) {
+            return redirect()->back()->with('error', 'Không thể xóa vì vẫn còn sản phẩm trong danh mục này');
+        }
         try {
             $category->delete();
             return redirect()->route('category.index')->with('success','xóa thanh cong');
