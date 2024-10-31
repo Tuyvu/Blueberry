@@ -11,6 +11,8 @@ use App\Models\Orders;
 use App\Models\Category;
 use Carbon\Carbon;
 use App\Models\Product;
+use App\Http\Requests\RegisterRequest;
+
 
 
 class AdminController extends Controller
@@ -92,7 +94,7 @@ class AdminController extends Controller
     {
         return view('admin.staff.add');
     }
-    public function postaddstaff(Request $req)
+    public function postaddstaff(RegisterRequest $req)
     { 
     //    dd($request->all());
        $req->merge(['password'=>Hash::make($req->password)]);
