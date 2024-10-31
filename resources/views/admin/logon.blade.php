@@ -6,6 +6,9 @@
             <div class="col-12">
                 <div class="section-title bb-center aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                     <div class="section-detail">
+                        <a href="{{route('user.index')}}">
+                            <img src="{{asset('assets')}}/img/logo/logo.png" alt="logo" style="margin-bottom: 26px;margin-right: 8px;" class="light">
+                        </a>
                         <h2 class="bb-title">Log <span>In</span> admin</h2>
                         <p>Best place to buy and sell digital products</p>
                     </div>
