@@ -37,9 +37,6 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="bb-login-wrap">
-                            <a href="javascript:void(0)">Quên mật khẩu?</a>
-                        </div>
                         <div class="bb-login-button">
                             <button class="bb-btn-2" type="submit">Đăng nhập</button>
                         </div>
