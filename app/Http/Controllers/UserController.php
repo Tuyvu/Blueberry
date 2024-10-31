@@ -87,13 +87,13 @@ class UserController extends Controller
     public function Delivered()
     {
         $user = Auth::user();
-        $orders = Orders::where('users_id',$user->id)->where('pay',1)->where('status',2)->orderBy('created_at', 'desc')->get();
+        $orders = Orders::where('users_id',$user->id)->where('pay',2)->where('status',2)->orderBy('created_at', 'desc')->get();
         return view('user.shiping',compact('orders'));
     }
     public function Received()
     {
         $user = Auth::user();
-        $orders = Orders::where('users_id',$user->id)->where('pay',1)->where('status',3)->orderBy('created_at', 'desc')->get();
+        $orders = Orders::where('users_id',$user->id)->where('pay',2)->where('status',3)->orderBy('created_at', 'desc')->get();
         return view('user.shiping',compact('orders'));
     }
     public function detailshiping($order)
